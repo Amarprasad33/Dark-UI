@@ -13,6 +13,10 @@
     "react-dom": "19.1.0",
     "next": "15.5.2"
   },
+  "overrides": {
+    "is-arrayish": "^0.4.0",
+    "simple-swizzle": "^0.2.3"
+  },
   "devDependencies": {
     "typescript": "^5",
     "@types/node": "^20",
