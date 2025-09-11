@@ -1,9 +1,7 @@
 export default function Version_1_Layout({
-    children,
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode;
 }) {
-    return (
-        <section>{children}</section>
-    )
+  return <section>{children}</section>;
 }
