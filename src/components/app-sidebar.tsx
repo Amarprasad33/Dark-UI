@@ -6,6 +6,9 @@ import {
   SidebarContent,
   SidebarGroupLabel,
   SidebarGroupContent,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
 } from "@/components/ui/sidebar";
 
 export function AppSidebar() {
@@ -17,9 +20,13 @@ export function AppSidebar() {
           <SidebarGroupLabel>Components</SidebarGroupLabel>
 
           <SidebarGroupContent>
-            <div>Flashlight Accodtion</div>
-            <div>Flashlight Tabs</div>
-            <div>Flashlight Checkbox</div>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton>Flashlight Accodtion</SidebarMenuButton>
+                <SidebarMenuButton>Flashlight Tabs</SidebarMenuButton>
+                <SidebarMenuButton>Flashlight Checkbox</SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>

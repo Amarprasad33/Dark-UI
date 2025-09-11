@@ -9,8 +9,10 @@ export default function ComponentsShowLayout({
   return (
     <SidebarProvider>
       <AppSidebar />
-      <section>
-        <SidebarTrigger />
+      <section className="w-full">
+        <div className="appbar border-b border-zinc-700 py-1 px-4 flex w-full">
+          <SidebarTrigger />
+        </div>
         {children}
       </section>
     </SidebarProvider>

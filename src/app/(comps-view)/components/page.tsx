@@ -1,3 +1,3 @@
 export default function ComponentsHome() {
-  return <section>hioi</section>;
+  return <section>Components Preview</section>;
 }
