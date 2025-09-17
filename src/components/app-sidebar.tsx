@@ -10,6 +10,11 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
+
+const sidebarMenuItems = [
+  { label: "Tubelight Accodtion", href: "/components/tubelight-accordion" },
+];
 
 export function AppSidebar() {
   return (
@@ -22,9 +27,17 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton>Flashlight Accodtion</SidebarMenuButton>
-                <SidebarMenuButton>Flashlight Tabs</SidebarMenuButton>
-                <SidebarMenuButton>Flashlight Checkbox</SidebarMenuButton>
+                {sidebarMenuItems.map((item) => (
+                  <SidebarMenuButton
+                    key={item.label}
+                    className="cursor-pointer"
+                  >
+                    <Link href={item.href}>{item.label}</Link>
+                  </SidebarMenuButton>
+                ))}
+
+                {/* <SidebarMenuButton>Flashlight Tabs</SidebarMenuButton>
+                <SidebarMenuButton>Flashlight Checkbox</SidebarMenuButton> */}
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
