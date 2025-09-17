@@ -1,213 +1,214 @@
 "use client";
-import {
-  motion,
-  AnimatePresence,
-  //   useAnimation,
-  useAnimationControls,
-} from "motion/react";
-import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "motion/react";
+import { useMemo, useState } from "react";
 
-export function TubelightAccordion() {
+export default function DarkAccordion() {
   const [open, setOpen] = useState(false);
-  const tubelightControls = useAnimationControls();
-  const tubelightGlowControls = useAnimationControls();
+  // const [scope, animate] = useAnimate();
+  // const tubelightControls = useAnimation();
+  // const tubelightGlowControls = useAnimation();
   // const text = useAnimation();
 
-  useEffect(() => {
-    async function runFlickerAndGlow() {
-      if (open) {
-        // Flicker sequence
-        const flickerSequence = [
-          { opacity: 0, duration: 0.3 },
-          { opacity: 0.2, duration: 0.1 },
-          { opacity: 1, duration: 0.08 },
-          { opacity: 0.3, duration: 0.13 },
-          { opacity: 1, duration: 0.1 },
-        ];
+  const { keyframes, times, totalDuration } = useMemo(() => {
+    const flickerSequence = [
+      { opacity: 0, duration: 0.3 },
+      { opacity: 0.2, duration: 0.1 },
+      { opacity: 1, duration: 0.08 },
+      { opacity: 0.3, duration: 0.13 },
+      { opacity: 1, duration: 0.1 },
+    ];
 
-        let totalDuration = 0;
-        const keyframes = [];
-        for (const step of flickerSequence) {
-          keyframes.push(step.opacity);
-          totalDuration += step.duration;
-        }
-        keyframes.push(1);
-
-        // Start flicker, wait for it to finish
-        await tubelightControls.start({
-          opacity: keyframes,
-          transition: {
-            duration: totalDuration + 0.1,
-            times: [
-              0,
-              ...flickerSequence.map(
-                (_, i) =>
-                  flickerSequence
-                    .slice(0, i + 1)
-                    .reduce((a, b) => a + b.duration, 0) /
-                  (totalDuration + 0.1)
-              ),
-              1,
-            ],
-            ease: "linear",
-          },
-        });
-
-        // Animate the glow in
-        await tubelightGlowControls.start({
-          opacity: [0, 1],
-          transition: { duration: 0.5, ease: "easeOut" },
-        });
-      } else {
-        // tubelightControls.set({ opacity: 0 });
-        // tubelightGlowControls.set({ opacity: 0 });
-      }
+    let totalDuration = 0;
+    const keyframes = [];
+    for (const step of flickerSequence) {
+      keyframes.push(step.opacity);
+      totalDuration += step.duration;
     }
-    runFlickerAndGlow();
-  }, [open, tubelightControls, tubelightGlowControls]);
+    keyframes.push(1);
+    console.log("keyframes", keyframes);
+
+    const times = [
+      0,
+      ...flickerSequence.map(
+        (_, i) =>
+          flickerSequence.slice(0, i + 1).reduce((a, b) => a + b.duration, 0) /
+          (totalDuration + 0.1)
+      ),
+      1,
+    ];
+    console.log("times", times);
+
+    return { keyframes, times, totalDuration };
+  }, []);
 
   return (
-    <div className="w-full min-h-[30rem] border border-zinc-800 rounded-xl flex flex-col items-center">
-      {/* border-b border-[#313335] */}
-      <div className="outer-container relative overflow-hidden text-white mt-16 min-w-[28rem] max-w-[30rem] border-b border-[#313335] ">
-        <AnimatePresence mode="popLayout">
-          {open && (
-            <motion.div
-              className="tubelight-container h-6 w-full flex justify-center absolute -top-[6px]"
-              animate={tubelightControls}
-              initial={{ opacity: 0 }}
-              exit={{
-                opacity: 0,
-                transition: { duration: 0.4, ease: "easeInOut" },
-              }}
-            >
-              <div className="w-[62%] h-3 bg-[#E8E8E8] blur-md rounded-full"></div>
-              <div className="absolute w-[60%] h-2 top-[2px] bg-[#E8E8E8] rounded-full"></div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-        <AnimatePresence mode="popLayout">
-          {open && (
-            // <motion.div
-            //     className="tubelight-glow absolute -top-8 blur-[0px] left-1/2 -translate-x-1/2 w-[80%] h-12"
-            //     animate={tubelightGlowControls}
-            //     initial={{ opacity: 0 }}
-            //     style={{
-            //         background: "#E8E8E8",
-            //         // opacity is now controlled by animation
-            //         height: '100px',
-            //         // clipPath: "polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)",
-            //     }}
-            // ></motion.div>
-            <motion.div
-              className="tubelight-glow absolute -top-[9rem] blur-[0px] left-[40%] -translate-x-1/2 w-[80%]"
-              animate={tubelightGlowControls}
-              initial={{ opacity: 0 }}
-              exit={{
-                opacity: 0,
-                transition: { duration: 0.5, ease: "easeInOut" },
-              }}
-            >
-              <svg
-                width="569"
-                height="358"
-                viewBox="0 0 569 358"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g filter="url(#filter0_f_35_5)">
-                  <path
-                    d="M147.923 111H339.715L457.264 247H18L147.923 111Z"
-                    fill="#E8E8E8"
-                    fillOpacity="0.39"
-                  />
-                </g>
-                <defs>
-                  <filter
-                    id="filter0_f_35_5"
-                    x="-92.9885"
-                    y="0.0114975"
-                    width="661.241"
-                    height="357.977"
-                    filterUnits="userSpaceOnUse"
-                    colorInterpolationFilters="sRGB"
-                  >
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feBlend
-                      mode="normal"
-                      in="SourceGraphic"
-                      in2="BackgroundImageFix"
-                      result="shape"
-                    />
-                    <feGaussianBlur
-                      stdDeviation="55.4943"
-                      result="effect1_foregroundBlur_35_5"
-                    />
-                  </filter>
-                </defs>
-              </svg>
-            </motion.div>
-          )}
-        </AnimatePresence>
-        {/* Accordion closed */}
-        <div className="flex justify-between items-center px-5 py-3">
-          <div className="text-sm">
-            Why don’t I ever have brilliant ideas in meetings?
-          </div>
-          {/* shadow-[0px_0px_9px_1px_rgba(255,_255,_255,_0.25)] */}
-          <div
-            className={cn(
-              "bg-[#141616] p-1 rounded-full flex items-center justify-center cursor-pointer z-10",
-              open && "shadow-[0px_0px_9px_1px_rgba(255,_255,_255,_0.25)]"
-            )}
-            onClick={() => setOpen((prev) => !prev)}
-          >
-            <span className="">{open ? <PowerOffSVG /> : <PlusSVG />}</span>
-            <span className="absolute blur-[2.2px]">
-              {open ? <PowerOffSVG /> : <PlusSVG />}
-            </span>
-          </div>
-        </div>
-        {/* open */}
-        <AnimatePresence mode="popLayout">
-          {open && (
-            <motion.div
-              initial={{
-                y: -20,
-                opacity: 0.6,
-              }}
-              animate={{
-                y: 0,
-                opacity: 1,
-              }}
-              transition={{
-                type: "spring",
-                bounce: 0,
-                duration: 0.3,
-              }}
-              exit={{
-                y: -60,
-                opacity: 0,
-                transition: { duration: 0.3, ease: "easeIn" },
-              }}
-              className="flex items-center px-5 py-3 text-sm"
-            >
+    <div className="min-h-screen bg-black flex justify-center items-center">
+      <div className="w-[60%] min-h-[30rem] border border-zinc-800 rounded-xl flex flex-col items-center">
+        {/* border-b border-[#313335] */}
+        <div className="outer-container relative overflow-hidden text-white mt-16 min-w-[28rem] max-w-[30rem] border-b border-[#313335] ">
+          <AnimatePresence mode="popLayout">
+            {open && (
               <motion.div
-                className="accordion-text"
-                animate={tubelightControls}
+                className="tubelight-container h-6 w-full flex justify-center absolute -top-[6px]"
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: keyframes,
+                }}
+                transition={{
+                  duration: totalDuration + 0.1,
+                  times,
+                  ease: "linear",
+                }}
+                exit={{
+                  opacity: 0,
+                  transition: { duration: 0.4, ease: "easeInOut" },
+                }}
+              >
+                <div className="w-[62%] h-3 bg-[#E8E8E8] blur-md rounded-full"></div>
+                <div className="absolute w-[60%] h-2 top-[2px] bg-[#E8E8E8] rounded-full"></div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <AnimatePresence mode="popLayout">
+            {open && (
+              <motion.div
+                className="tubelight-glow absolute -top-[9rem] blur-[0px] left-[40%] -translate-x-1/2 w-[80%]"
+                animate={{
+                  opacity: [0, 1],
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                }}
                 initial={{ opacity: 0 }}
                 exit={{
                   opacity: 0,
-                  transition: { duration: 0.1, ease: "easeIn" },
+                  transition: { duration: 0.5, ease: "easeInOut" },
                 }}
               >
-                Because your brain runs on tubelight mode — it flickers, hums,
-                then lights up exactly 10 minutes after the meeting ends.
+                <svg
+                  width="569"
+                  height="358"
+                  viewBox="0 0 569 358"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g filter="url(#filter0_f_35_5)">
+                    <path
+                      d="M147.923 111H339.715L457.264 247H18L147.923 111Z"
+                      fill="#E8E8E8"
+                      fillOpacity="0.39"
+                    />
+                  </g>
+                  <defs>
+                    <filter
+                      id="filter0_f_35_5"
+                      x="-92.9885"
+                      y="0.0114975"
+                      width="661.241"
+                      height="357.977"
+                      filterUnits="userSpaceOnUse"
+                      colorInterpolationFilters="sRGB"
+                    >
+                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                      <feBlend
+                        mode="normal"
+                        in="SourceGraphic"
+                        in2="BackgroundImageFix"
+                        result="shape"
+                      />
+                      <feGaussianBlur
+                        stdDeviation="55.4943"
+                        result="effect1_foregroundBlur_35_5"
+                      />
+                    </filter>
+                  </defs>
+                </svg>
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            )}
+          </AnimatePresence>
+          {/* Accordion closed */}
+          <div className="flex justify-between items-center px-5 py-3">
+            <div className="text-sm">
+              Why don’t I ever have brilliant ideas in meetings?
+            </div>
+            {/* shadow-[0px_0px_9px_1px_rgba(255,_255,_255,_0.25)] */}
+            <div
+              className={cn(
+                "bg-[#141616] p-1 rounded-full flex items-center justify-center cursor-pointer z-10",
+                open && "shadow-[0px_0px_9px_1px_rgba(255,_255,_255,_0.25)]"
+              )}
+              onClick={() => setOpen((prev) => !prev)}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {open ? (
+                  <motion.span
+                    key="power"
+                    layoutId="toggle-icon"
+                    initial={{ opacity: 0, rotate: -90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: -120 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <PowerOffSVG />
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="plus"
+                    layoutId="toggle-icon"
+                    initial={{ opacity: 0, rotate: 90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: 90 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <PlusSVG />
+                  </motion.span>
+                )}
+              </AnimatePresence>
+              {/* <span className="absolute blur-[2.2px]">{open ? <PowerOffSVG /> : <PlusSVG />}</span> */}
+            </div>
+          </div>
+          {/* open */}
+          <AnimatePresence mode="wait">
+            {open && (
+              <motion.div
+                key="accordion-content"
+                layout // enables smooth height/position transitions
+                initial={{ y: -20, opacity: 0.6 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+                exit={{
+                  y: -60,
+                  opacity: 0,
+                  transition: { duration: 0.3, ease: "easeIn" },
+                }}
+                className="flex items-center px-5 py-3"
+              >
+                <motion.div
+                  className="accordion-text text-white text-sm"
+                  layoutId="accordion-text" // ties layout animation across renders
+                  initial={{ opacity: 1 }}
+                  animate={{
+                    opacity: keyframes,
+                  }}
+                  transition={{
+                    duration: totalDuration + 0.1,
+                    times,
+                    ease: "linear",
+                  }}
+                  exit={{
+                    opacity: 0,
+                    transition: { duration: 0.1, ease: "easeIn" },
+                  }}
+                >
+                  Because your brain runs on tubelight mode — it flickers, hums,
+                  then lights up exactly 10 minutes after the meeting ends.
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );
