@@ -79,18 +79,6 @@ export default function NavMenu() {
     const toTopY = -getCumulativeHeightAbove(clickedIndex);
 
     await Promise.all(
-      // controlsRef.current.map((controls, index) => {
-      //   if (index < clickedIndex) {
-      //     // Above
-      //     return controls.start({ y: -20, opacity: 0, transition: spring });
-      //   } else if (index === clickedIndex) {
-      //     // Selected
-      //     return controls.start({ y: toTopY, opacity: 1, transition: spring });
-      //   } else {
-      //     // Below
-      //     return controls.start({ y: 20, opacity: 0, transition: spring });
-      //   }
-      // })
       itemRefs.current.map((el, index) => {
         if (!el) return;
         if (index < clickedIndex)
