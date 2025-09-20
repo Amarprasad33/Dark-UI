@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "acme",
+  "homepage": "https://acme.com",
+  "items": [
+    {
+      "name": "tubelight-accordion",
+      "type": "registry:block",
+      "title": "Tubelight Accordion",
+      "description": "An animated accordion component with motion",
+      "files": [
+        {
+          "path": "src/components/showcase/tubelight-accordion/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}
