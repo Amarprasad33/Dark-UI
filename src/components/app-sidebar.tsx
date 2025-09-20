@@ -14,6 +14,7 @@ import Link from "next/link";
 
 const sidebarMenuItems = [
   { label: "Tubelight Accodtion", href: "/components/tubelight-accordion" },
+  { label: "Luminated Checkbox", href: "/components/luminated-checkbox" },
 ];
 
 export function AppSidebar() {

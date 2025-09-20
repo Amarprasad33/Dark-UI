@@ -10,14 +10,10 @@ export default function LuminatedCheckbox() {
     "Now google all day how become a better skibidi dev ",
   ];
   return (
-    <div className="min-h-screen h-screen bg-black flex justify-center items-center">
-      <div className="w-[80%] min-h-[70%] border border-zinc-700 border-dashed flex flex-col items-center justify-center">
-        <div className="flex flex-col items-start">
-          {checkBoxTexts.map((text, idx) => (
-            <AnimatedCheckboxComponent key={idx} displayText={text} />
-          ))}
-        </div>
-      </div>
+    <div className="flex flex-col items-start">
+      {checkBoxTexts.map((text, idx) => (
+        <AnimatedCheckboxComponent key={idx} displayText={text} />
+      ))}
     </div>
   );
 }

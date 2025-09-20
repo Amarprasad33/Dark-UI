@@ -82,10 +82,10 @@ export default function NavMenu() {
       itemRefs.current.map((el, index) => {
         if (!el) return;
         if (index < clickedIndex)
-          return animate(el, { y: -20, opacity: 0 }, { transition: spring });
+          return animate(el, { y: -20, opacity: 0 }, spring);
         if (index === clickedIndex)
-          return animate(el, { y: toTopY, opacity: 1 }, { transition: spring });
-        return animate(el, { y: 20, opacity: 0 }, { transition: spring });
+          return animate(el, { y: toTopY, opacity: 1 }, spring);
+        return animate(el, { y: 20, opacity: 0 }, spring);
       })
     );
   };
@@ -100,7 +100,7 @@ export default function NavMenu() {
     } as const;
     await Promise.all(
       itemRefs.current.map(
-        (el) => el && animate(el, { y: 0, opacity: 1 }, { transition: spring })
+        (el) => el && animate(el, { y: 0, opacity: 1 }, spring)
       )
     );
   };
