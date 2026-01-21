@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "acme",
-  "homepage": "https://acme.com",
+  "name": "dark-ui",
+  "homepage": "http://dark-ui.vercel.app",
   "items": [
     {
       "name": "tubelight-accordion",
