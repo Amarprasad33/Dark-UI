@@ -2,7 +2,16 @@
 import { createMDX } from "fumadocs-mdx/next";
 
 const nextConfig = {
-  /* config options here */
+  experimental: {
+    optimizePackageImports: [
+      "motion",
+      "lucide-react",
+      "@radix-ui/react-dialog",
+      "@radix-ui/react-separator",
+      "@radix-ui/react-slot",
+      "@radix-ui/react-tooltip",
+    ],
+  },
 };
 
 const withMDX = createMDX({

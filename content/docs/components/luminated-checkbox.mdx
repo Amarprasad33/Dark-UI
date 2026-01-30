@@ -1,0 +1,36 @@
+---
+title: Luminated Checkbox
+description: An animated checkbox with strikethrough effect, border animations, and smooth state transitions.
+---
+
+import LuminatedCheckbox from "@/registry/iris/luminated-checkbox";
+
+## Preview
+
+<div className="flex w-full items-center justify-center p-10 border border-zinc-800 rounded-lg">
+  <LuminatedCheckbox />
+</div>
+
+## Installation
+
+```bash
+npx shadcn add https://dark-ui.vercel.app/r/luminated-checkbox.json
+```
+
+## Usage
+
+```tsx
+import LuminatedCheckbox from "@/components/luminated-checkbox";
+
+export default function Example() {
+  return <LuminatedCheckbox />;
+}
+```
+
+## Props
+
+| Prop        | Type                                        | Default     | Description                         |
+| :---------- | :------------------------------------------ | :---------- | :---------------------------------- |
+| `items`     | `string[]`                                  | `[...]`     | Array of labels for the checkboxes. |
+| `className` | `string`                                    | `undefined` | Custom class for the container.     |
+| `onChange`  | `(index: number, checked: boolean) => void` | `undefined` | Callback when state changes.        |
