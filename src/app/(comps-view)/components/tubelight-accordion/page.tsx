@@ -1,4 +1,4 @@
-import TubelightAccordion from "@/components/showcase/tubelight-accordion";
+import TubelightAccordion from "@/registry/iris/tubelight-accordion";
 
 export default function TubelightAccordionPage() {
   return (

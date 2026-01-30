@@ -1,9 +1,8 @@
 import {
   Sidebar,
   SidebarHeader,
-  SidebarFooter,
-  SidebarGroup,
   SidebarContent,
+  SidebarGroup,
   SidebarGroupLabel,
   SidebarGroupContent,
   SidebarMenu,
@@ -11,40 +10,74 @@ import {
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import * as PageTree from "fumadocs-core/page-tree";
 
-const sidebarMenuItems = [
-  { label: "Tubelight Accodtion", href: "/components/tubelight-accordion" },
-  { label: "Luminated Checkbox", href: "/components/luminated-checkbox" },
-];
-
-export function AppSidebar() {
+export function AppSidebar({ items }: { items: PageTree.Node[] }) {
   return (
     <Sidebar>
-      <SidebarHeader />
+      <SidebarHeader className="p-4 border-b border-sidebar-border">
+        <Link href="/" className="font-bold text-lg">
+          Dark UI
+        </Link>
+      </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Components</SidebarGroupLabel>
-
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                {sidebarMenuItems.map((item) => (
-                  <SidebarMenuButton
-                    key={item.label}
-                    className="cursor-pointer"
-                  >
-                    <Link href={item.href}>{item.label}</Link>
-                  </SidebarMenuButton>
-                ))}
-
-                {/* <SidebarMenuButton>Flashlight Tabs</SidebarMenuButton>
-                <SidebarMenuButton>Flashlight Checkbox</SidebarMenuButton> */}
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        {items.map((item, index) => {
+          if (item.type === "folder") {
+            return (
+              <SidebarGroup key={index}>
+                <SidebarGroupLabel>{item.name}</SidebarGroupLabel>
+                <SidebarGroupContent>
+                  <SidebarMenu>
+                    {item.children.map((child: PageTree.Node, idx) => (
+                      <SidebarItem key={idx} item={child} />
+                    ))}
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </SidebarGroup>
+            );
+          }
+          return (
+            <SidebarGroup key={index}>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <SidebarItem item={item} />
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          );
+        })}
       </SidebarContent>
-      <SidebarFooter />
     </Sidebar>
   );
+}
+
+function SidebarItem({ item }: { item: PageTree.Node }) {
+  if (item.type === "page") {
+    return (
+      <SidebarMenuItem>
+        <SidebarMenuButton asChild>
+          <Link href={item.url} className="w-full">
+            {item.name}
+          </Link>
+        </SidebarMenuButton>
+      </SidebarMenuItem>
+    );
+  }
+  
+  if (item.type === "folder") {
+    return (
+      <SidebarMenuItem>
+         <div className="font-medium px-2 py-1.5 text-sm text-sidebar-foreground/70">
+           {item.name}
+         </div>
+         {item.children.map((child: PageTree.Node, idx) => (
+           <div key={idx} className="pl-2">
+             <SidebarItem item={child} />
+           </div>
+         ))}
+      </SidebarMenuItem>
+    );
+  }
+
+  return null;
 }

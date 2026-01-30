@@ -7,10 +7,40 @@
       "name": "tubelight-accordion",
       "type": "registry:block",
       "title": "Tubelight Accordion",
-      "description": "An animated accordion component with motion",
+      "description": "An animated accordion with tubelight flicker effect that mimics the delayed illumination of fluorescent lights",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "registryDependencies": [],
       "files": [
         {
-          "path": "src/components/showcase/tubelight-accordion/index.tsx",
+          "path": "registry/iris/tubelight-accordion/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "vertical-nav",
+      "type": "registry:block",
+      "title": "Vertical Navigation Menu",
+      "description": "Animated vertical navigation with smooth spring-based item transitions and return functionality",
+      "dependencies": ["motion"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/iris/vertical-nav/index.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "luminated-checkbox",
+      "type": "registry:block",
+      "title": "Luminated Checkbox",
+      "description": "An animated checkbox with strikethrough effect, border animations, and smooth state transitions",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/iris/luminated-checkbox/index.tsx",
           "type": "registry:component"
         }
       ]

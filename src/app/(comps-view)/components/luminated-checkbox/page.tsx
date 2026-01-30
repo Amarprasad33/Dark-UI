@@ -1,4 +1,4 @@
-import LuminatedCheckbox from "@/components/showcase/luminated-checkbox";
+import LuminatedCheckbox from "@/registry/iris/luminated-checkbox";
 
 export default function LuminatedCheckboxComp() {
   return (
