@@ -129,7 +129,7 @@ export function useFlickerAnimation(): FlickerAnimationResult {
       ...flickerSequence.map(
         (_, i) =>
           flickerSequence.slice(0, i + 1).reduce((a, b) => a + b.duration, 0) /
-          (totalDuration + 0.1)
+          (totalDuration + 0.1),
       ),
       1,
     ];
@@ -163,7 +163,7 @@ export default function TubelightAccordion({
     <div
       className={cn(
         "w-[60%] min-h-[30rem] border border-zinc-800 rounded-xl flex flex-col items-center",
-        className
+        className,
       )}
     >
       <div className="outer-container relative overflow-hidden text-white mt-16 min-w-[28rem] max-w-[30rem] border-b border-[#313335]">
@@ -218,10 +218,11 @@ export default function TubelightAccordion({
         {/* Accordion header */}
         <div className="flex justify-between items-center px-5 py-3">
           <div className="text-sm">{question}</div>
-          <div
+          <motion.div
+            whileTap={{ scale: 0.84 }}
             className={cn(
               "bg-[#141616] p-1 rounded-full flex items-center justify-center cursor-pointer z-10",
-              open && "shadow-[0px_0px_9px_1px_rgba(255,_255,_255,_0.25)]"
+              open && "shadow-[0px_0px_9px_1px_rgba(255,_255,_255,_0.25)]",
             )}
             onClick={() => setOpen((prev) => !prev)}
           >
@@ -250,7 +251,7 @@ export default function TubelightAccordion({
                 </motion.span>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
         </div>
 
         {/* Accordion content */}

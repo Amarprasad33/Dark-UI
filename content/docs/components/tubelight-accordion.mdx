@@ -1,0 +1,41 @@
+---
+title: Tubelight Accordion
+description: An accordion component with a unique "tubelight" flicker animation effect on sticky headers and content revelation.
+---
+
+import TubelightAccordion from "@/registry/iris/tubelight-accordion";
+
+## Preview
+
+<div className="flex w-full items-center justify-center p-10 border border-zinc-800 rounded-lg">
+  <TubelightAccordion />
+</div>
+
+## Installation
+
+```bash
+npx shadcn add https://dark-ui.vercel.app/r/tubelight-accordion.json
+```
+
+## Usage
+
+```tsx
+import TubelightAccordion from "@/components/tubelight-accordion";
+
+export default function Example() {
+  return (
+    <TubelightAccordion
+      question="What is the Tubelight effect?"
+      answer="It mimics the flickering of an old fluorescent tube light before it fully turns on, adding a retro, industrial feel to the UI."
+    />
+  );
+}
+```
+
+## Props
+
+| Prop        | Type     | Default        | Description                     |
+| :---------- | :------- | :------------- | :------------------------------ |
+| `className` | `string` | `undefined`    | Custom class for the container. |
+| `question`  | `string` | `"Why..."`     | The header/question text.       |
+| `answer`    | `string` | `"Because..."` | The body/answer text.           |
