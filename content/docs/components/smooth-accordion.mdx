@@ -1,0 +1,67 @@
+---
+title: Smooth Accordion
+description: A sleek accordion component with smooth blur animations, dynamic border radius transitions, and elegant content expansion.
+---
+
+import SmoothAccordion from "@/registry/iris/smooth-accordion";
+
+## Preview
+
+<div className="flex w-full items-center justify-center p-10 min-h-[30rem] border border-zinc-800 rounded-lg">
+  <SmoothAccordion />
+</div>
+
+## Installation
+
+```bash
+npx shadcn add https://dark-ui.vercel.app/r/smooth-accordion.json
+```
+
+## Usage
+
+```tsx
+import SmoothAccordion from "@/components/smooth-accordion";
+
+export default function Example() {
+  return <SmoothAccordion />;
+}
+```
+
+### Custom Items
+
+```tsx
+import SmoothAccordion, { AccordionItem } from "@/components/smooth-accordion";
+
+export default function Example() {
+  const items: AccordionItem[] = [
+    {
+      label: "What is React?",
+      data: "React is a JavaScript library for building user interfaces.",
+    },
+    {
+      label: "What is Next.js?",
+      data: "Next.js is a React framework for production-grade applications.",
+    },
+  ];
+
+  return <SmoothAccordion items={items} />;
+}
+```
+
+## Props
+
+| Prop        | Type              | Default     | Description                          |
+| :---------- | :---------------- | :---------- | :----------------------------------- |
+| `className` | `string`          | `undefined` | Custom class for the container.      |
+| `items`     | `AccordionItem[]` | `[...]`     | Array of accordion items to display. |
+
+## Named Exports
+
+The component exports reusable parts for composition and tree-shaking:
+
+```tsx
+import { ChevronDownIcon, AccordionItem } from "@/components/smooth-accordion";
+```
+
+- **`ChevronDownIcon`**: Memoized chevron icon component
+- **`AccordionItem`**: TypeScript interface for accordion items
