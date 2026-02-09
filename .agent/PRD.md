@@ -124,137 +124,125 @@ Dark-UI/
 
 ## Component Specifications
 
-### Current Components (v0.1.0)
+### Component Library Overview
 
-#### 1. Tubelight Accordion
+The Dark-UI library currently includes **4 components** with plans to expand to **50+ components**. Each component follows consistent patterns and standards outlined in this document.
 
-**Description:** An animated accordion that mimics the delayed illumination of fluorescent tube lights with realistic flicker effects.
+**Current Components (v0.1.0):**
 
-**Key Features:**
+- Tubelight Accordion
+- Luminated Checkbox
+- Vertical Navigation Menu
+- Smooth Accordion
 
-- Realistic tubelight flicker animation on expand
-- Custom `useFlickerAnimation` hook for timing
-- Hoisted SVG icons (PowerOffIcon, PlusIcon, TubelightGlowSVG)
-- Smooth expand/collapse transitions
-
-**API:**
-
-```typescript
-interface TubelightAccordionProps {
-  className?: string;
-  question?: string;
-  answer?: string;
-}
-```
-
-**Named Exports:**
-
-- `PowerOffIcon` - Memoized power icon component
-- `PlusIcon` - Memoized plus icon component
-- `TubelightGlowSVG` - Memoized glow effect SVG
-
-**Performance Optimizations:**
-
-- Memoized flicker animation calculations
-- Hoisted SVG components prevent re-creation
-- Optimized keyframe animations
+For detailed component documentation, API references, and live examples, visit the [component documentation](http://dark-ui.vercel.app/docs).
 
 ---
 
-#### 2. Luminated Checkbox
+### Generic Component Specification Template
 
-**Description:** An animated checkbox with border animations, fill effects, strikethrough text, and smooth state transitions.
+All components in the Dark-UI library follow this specification structure:
+
+#### Component Name
+
+**Description:** A brief 1-2 sentence description of what the component does and its primary use case.
 
 **Key Features:**
 
-- Multi-stage animation sequence (border → fill → checkmark)
-- Strikethrough animation on checked state
-- Text slide micro-interaction
-- Keyboard accessible
+- Feature 1: Description of key functionality
+- Feature 2: Unique animation or interaction pattern
+- Feature 3: Accessibility or performance highlight
+- Feature 4: Customization or composition capability
 
 **API:**
 
 ```typescript
-interface LuminatedCheckboxProps {
-  items?: string[];
+// Main component props interface
+export interface ComponentNameProps {
+  /** Optional custom className for styling */
   className?: string;
-  onChange?: (index: number, checked: boolean) => void;
+  /** Callback function for primary interaction */
+  onAction?: (data: DataType) => void;
+  /** Configuration options */
+  options?: OptionsType;
+  /** Content or data to display */
+  items?: ItemType[];
 }
 
-interface AnimatedCheckboxProps {
-  displayText: string;
-  onChange?: (checked: boolean) => void;
-  className?: string;
+// Sub-component props (if applicable)
+export interface SubComponentProps {
+  /** Specific props for sub-component */
+  propName: type;
 }
 ```
 
 **Named Exports:**
 
-- `AnimatedCheckbox` - Individual checkbox component
-- `DEFAULT_ITEMS` - Default checkbox items array
+Components export sub-components, utilities, and constants for composition:
+
+```typescript
+// Main component (default export)
+export default ComponentName;
+
+// Sub-components for composition
+export { SubComponent, IconComponent };
+
+// Constants and configurations
+export { DEFAULT_CONFIG, ANIMATION_VARIANTS };
+
+// Custom hooks (if applicable)
+export { useComponentLogic };
+```
 
 **Performance Optimizations:**
 
-- Memoized `AnimatedCheckbox` sub-component
+Each component implements these performance patterns:
+
+- Memoized sub-components using `React.memo`
+- Hoisted constants and SVG icons outside component scope
+- `useMemo` for expensive calculations
 - `useCallback` for event handlers
-- Optimized animation sequences with `useAnimate`
+- Optimized animation configurations
 
----
+**Accessibility Features:**
 
-#### 3. Vertical Navigation Menu
+All components include:
 
-**Description:** Animated vertical navigation with spring-based transitions and return functionality.
+- Semantic HTML elements
+- ARIA attributes (`role`, `aria-label`, `aria-*`)
+- Keyboard navigation support
+- Focus management and indicators
+- Screen reader compatibility
 
-**Key Features:**
+**Usage Example:**
 
-- Spring physics-based animations
-- Dynamic height calculations
-- Return-to-menu functionality
-- Smooth item reordering
+```tsx
+import ComponentName from "@/components/component-name";
 
-**API:**
-
-```typescript
-interface MenuItem {
-  id: string;
-  label: string;
-}
-
-interface VerticalNavProps {
-  items?: MenuItem[];
-  onSelect?: (item: MenuItem, index: number) => void;
-  className?: string;
+export default function Demo() {
+  return (
+    <ComponentName
+      className="custom-class"
+      onAction={(data) => console.log(data)}
+      options={{ variant: "default" }}
+    />
+  );
 }
 ```
 
-**Named Exports:**
+**Composition Example:**
 
-- `ReturnIcon` - Memoized return arrow icon
-- `NavRow` - Individual navigation row component
-- `SPRING_CONFIG` - Reusable spring animation config
-- `DEFAULT_ITEMS` - Default menu items
+```tsx
+import { SubComponent, DEFAULT_CONFIG } from "@/components/component-name";
 
-**Performance Optimizations:**
-
-- Memoized `NavRow` sub-component
-- `useLayoutEffect` for DOM measurements
-- Hoisted spring configuration
-- Stabilized items reference with `useMemo`
-
----
-
-#### 4. Smooth Accordion
-
-**Description:** A smooth accordion component with elegant expand/collapse animations.
-
-**Status:** Currently under refactoring to align with best practices from `tubelight-accordion` and `luminated-checkbox`.
-
-**Planned Improvements:**
-
-- Adopt named exports pattern
-- Extract reusable sub-components
-- Implement performance optimizations
-- Add comprehensive TypeScript types
+export default function CustomImplementation() {
+  return (
+    <div>
+      <SubComponent config={DEFAULT_CONFIG} />
+    </div>
+  );
+}
+```
 
 ---
 
