@@ -1,7 +1,74 @@
 ---
-title: Hello World
+title: Introduction
+description: A premium, dark-themed UI component library for modern web applications.
 ---
 
-## Introduction
+import LuminatedCheckbox from "@/registry/iris/luminated-checkbox";
 
-I love Anime.
+# Introduction
+
+**Dark-UI** is a collection of re-usable components focused on premium dark aesthetics, smooth animations, and developer experience. Built with React, Tailwind CSS, and Framer Motion.
+
+This isn't just another component library. It's designed to help you build applications that feel **premium** and **alive**.
+
+## Key Features
+
+- **Premium Dark Aesthetics**: Carefully crafted dark color palettes, sophisticated animations, and micro-interactions that wow users.
+- **Performance Optimized**: Tree-shakeable exports, memoized components, and hoisted constants ensure your app stays fast.
+- **Developer Experience**: TypeScript first, consistent API patterns, and easy integration with existing projects.
+- **Production Ready**: Fully accessible (ARIA compliant), responsive, and mobile-friendly out of the box.
+
+## Getting Started
+
+Dark-UI components are designed to be copied and pasted into your project, or installed via CLI.
+
+### Prerequisites
+
+Dark-UI is built on top of modern web technologies:
+
+- [React](https://react.dev) 18 or later
+- [Next.js](https://nextjs.org) 13 or later (App Router)
+- [Tailwind CSS](https://tailwindcss.com) 3 or later
+- [Framer Motion](https://www.framer.com/motion/) for animations
+
+### Installation
+
+You can add components to your project using the CLI:
+
+```bash
+npx shadcn@latest add http://dark-ui.vercel.app/r/component-name.json
+```
+
+Replace `component-name` with the specific component you want to add (e.g., `luminated-checkbox`).
+
+## Explore Components
+
+Ready to build? Check out our available components:
+
+- [Tubelight Accordion](/docs/components/tubelight-accordion) - A sleek accordion with a moving light effect.
+- [Luminated Checkbox](/docs/components/luminated-checkbox) - An animated checkbox with glowing states.
+- [Smooth Accordion](/docs/components/smooth-accordion) - A buttery smooth accordion for content toggling.
+
+<div className="flex w-full items-center justify-center p-10 border border-zinc-800 rounded-lg my-8 relative overflow-hidden">
+  <div className="absolute inset-0 bg-gradient-to-tr from-zinc-900/50 to-zinc-900/20" />
+  <div className="z-10 flex flex-col items-center gap-4">
+    <p className="text-sm text-zinc-400 font-medium">Live Demo</p>
+    <LuminatedCheckbox />
+  </div>
+</div>
+
+## Philosophy
+
+We believe in **composition over configuration**. Our components export sub-components and utilities, giving you full control over how they are rendered and behaved.
+
+```tsx
+import { SubComponent, DEFAULT_CONFIG } from "@/components/component-name";
+
+export default function CustomImplementation() {
+  return (
+    <div>
+      <SubComponent config={DEFAULT_CONFIG} />
+    </div>
+  );
+}
+```

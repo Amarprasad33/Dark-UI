@@ -11,12 +11,17 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import * as PageTree from "fumadocs-core/page-tree";
+import { Logo } from "./landing/logo";
 
 export function AppSidebar({ items }: { items: PageTree.Node[] }) {
   return (
     <Sidebar>
-      <SidebarHeader className="p-4 border-b border-sidebar-border">
-        <Link href="/" className="font-bold text-lg">
+      <SidebarHeader className="p-4 pb-[19px] border-b border-sidebar-border">
+        <Link
+          href="/"
+          className="font-bold text-lg translate-y-[2.5px] flex gap-1"
+        >
+          <Logo width={24} height={24} className="translate-y-[3px]" />
           Dark UI
         </Link>
       </SidebarHeader>
@@ -63,18 +68,18 @@ function SidebarItem({ item }: { item: PageTree.Node }) {
       </SidebarMenuItem>
     );
   }
-  
+
   if (item.type === "folder") {
     return (
       <SidebarMenuItem>
-         <div className="font-medium px-2 py-1.5 text-sm text-sidebar-foreground/70">
-           {item.name}
-         </div>
-         {item.children.map((child: PageTree.Node, idx) => (
-           <div key={idx} className="pl-2">
-             <SidebarItem item={child} />
-           </div>
-         ))}
+        <div className="font-medium px-2 py-1.5 text-sm text-sidebar-foreground/70">
+          {item.name}
+        </div>
+        {item.children.map((child: PageTree.Node, idx) => (
+          <div key={idx} className="pl-2">
+            <SidebarItem item={child} />
+          </div>
+        ))}
       </SidebarMenuItem>
     );
   }
