@@ -1,5 +1,5 @@
-"use client"
-import React, { useEffect, useRef } from 'react';
+"use client";
+import React, { useEffect, useRef } from "react";
 
 interface Particle {
   x: number;
@@ -17,7 +17,7 @@ export const ParticleBackground: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let width = window.innerWidth;
@@ -44,7 +44,7 @@ export const ParticleBackground: React.FC = () => {
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
-      
+
       // Update and draw particles
       particles.forEach((p, i) => {
         p.x += p.vx;
@@ -87,18 +87,18 @@ export const ParticleBackground: React.FC = () => {
       canvas.height = height;
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     render();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       className="absolute top-0 left-0 w-full h-full pointer-events-none z-0 opacity-60"
     />
   );
