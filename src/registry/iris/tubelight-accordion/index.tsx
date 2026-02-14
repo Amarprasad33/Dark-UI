@@ -154,7 +154,7 @@ export interface TubelightAccordionProps {
 export default function TubelightAccordion({
   className,
   question = "Why don't I ever have brilliant ideas in meetings?",
-  answer = "Because your brain runs on tubelight mode — it flickers, hums, then lights up exactly 10 minutes after the meeting ends.",
+  answer = "Because your brain runs on tubelight mode. It flickers, hums, then lights up exactly 10 minutes after the meeting ends.",
 }: TubelightAccordionProps) {
   const [open, setOpen] = useState(false);
   const { keyframes, times, totalDuration } = useFlickerAnimation();
@@ -166,7 +166,7 @@ export default function TubelightAccordion({
         className,
       )}
     >
-      <div className="outer-container relative overflow-hidden text-white mt-16 min-w-[28rem] max-w-[30rem] border-b border-[#313335]">
+      <motion.div className="outer-container relative overflow-hidden text-white mt-16 min-w-[28rem] max-w-[30rem] border-b border-[#313335]">
         {/* Tubelight bar animation */}
         <AnimatePresence mode="popLayout">
           {open && (
@@ -255,44 +255,34 @@ export default function TubelightAccordion({
         </div>
 
         {/* Accordion content */}
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           {open && (
             <motion.div
               key="accordion-content"
-              layout
-              initial={{ y: -20, opacity: 0.6 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              exit={{
-                y: -60,
-                opacity: 0,
-                transition: { duration: 0.3, ease: "easeIn" },
-              }}
-              className="flex items-center px-5 py-3"
+              initial={{ height: 0 }}
+              animate={{ height: "auto" }}
+              exit={{ height: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="overflow-hidden"
             >
-              <motion.div
-                className="accordion-text text-white text-sm"
-                layoutId="accordion-text"
-                initial={{ opacity: 1 }}
-                animate={{
-                  opacity: keyframes,
-                }}
-                transition={{
-                  duration: totalDuration + 0.1,
-                  times,
-                  ease: "linear",
-                }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.1, ease: "easeIn" },
-                }}
-              >
-                {answer}
-              </motion.div>
+              <div className="flex items-center px-5 py-3">
+                <motion.div
+                  className="accordion-text text-white text-sm"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: keyframes }}
+                  transition={{
+                    duration: totalDuration + 0.1,
+                    times,
+                    ease: "linear",
+                  }}
+                >
+                  {answer}
+                </motion.div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </div>
   );
 }
