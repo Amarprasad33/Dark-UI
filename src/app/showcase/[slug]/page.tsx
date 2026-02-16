@@ -9,6 +9,7 @@ import MultiFollowCursor from "@/registry/iris/multi-follow-cursor";
 import SmoothAccordion from "@/registry/iris/smooth-accordion";
 import TubelightAccordion from "@/registry/iris/tubelight-accordion";
 import VerticalNav from "@/registry/iris/vertical-nav";
+import GooeyMenu from "@/registry/iris/gooey-menu";
 
 // ============================================================================
 // Component Registry
@@ -38,10 +39,14 @@ const componentMap: Record<
     component: TubelightAccordion,
     title: "Tubelight Accordion",
   },
-  "vertical-nav": {
-    component: VerticalNav,
-    title: "Vertical Nav",
+  "gooey-menu": {
+    component: GooeyMenu,
+    title: "Gooey Menu",
   },
+  // "vertical-nav": {
+  //   component: VerticalNav,
+  //   title: "Vertical Nav",
+  // },
 };
 
 // ============================================================================
