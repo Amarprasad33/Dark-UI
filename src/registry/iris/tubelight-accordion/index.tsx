@@ -160,13 +160,13 @@ export default function TubelightAccordion({
   const { keyframes, times, totalDuration } = useFlickerAnimation();
 
   return (
-    <div
-      className={cn(
-        "w-[60%] min-h-[30rem] border border-zinc-800 rounded-xl flex flex-col items-center",
-        className,
-      )}
-    >
-      <motion.div className="outer-container relative overflow-hidden text-white mt-16 min-w-[28rem] max-w-[30rem] border-b border-[#313335]">
+    <AnimatePresence mode="popLayout">
+      <motion.div
+        className={cn(
+          "outer-container relative overflow-hidden text-white w-full max-w-[30rem] border-b border-[#313335]",
+          className,
+        )}
+      >
         {/* Tubelight bar animation */}
         <AnimatePresence mode="popLayout">
           {open && (
@@ -221,19 +221,19 @@ export default function TubelightAccordion({
           <motion.div
             whileTap={{ scale: 0.84 }}
             className={cn(
-              "bg-[#141616] p-1 rounded-full flex items-center justify-center cursor-pointer z-10",
+              "relative bg-[#141616] h-6 w-6 rounded-full flex items-center justify-center cursor-pointer z-10",
               open && "shadow-[0px_0px_9px_1px_rgba(255,_255,_255,_0.25)]",
             )}
             onClick={() => setOpen((prev) => !prev)}
           >
-            <AnimatePresence mode="wait" initial={false}>
+            <AnimatePresence mode="popLayout" initial={false}>
               {open ? (
                 <motion.span
                   key="power"
-                  layoutId="toggle-icon"
-                  initial={{ opacity: 0, rotate: -90 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: -120 }}
+                  className="absolute inset-0 flex items-center justify-center"
+                  initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                  exit={{ opacity: 0, rotate: -90, scale: 0.5 }}
                   transition={{ duration: 0.25 }}
                 >
                   <PowerOffIcon />
@@ -241,10 +241,10 @@ export default function TubelightAccordion({
               ) : (
                 <motion.span
                   key="plus"
-                  layoutId="toggle-icon"
-                  initial={{ opacity: 0, rotate: 90 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: 90 }}
+                  className="absolute inset-0 flex items-center justify-center"
+                  initial={{ opacity: 0, rotate: 90, scale: 0.5 }}
+                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                  exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
                   transition={{ duration: 0.25 }}
                 >
                   <PlusIcon />
@@ -255,7 +255,7 @@ export default function TubelightAccordion({
         </div>
 
         {/* Accordion content */}
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {open && (
             <motion.div
               key="accordion-content"
@@ -283,7 +283,7 @@ export default function TubelightAccordion({
           )}
         </AnimatePresence>
       </motion.div>
-    </div>
+    </AnimatePresence>
   );
 }
 

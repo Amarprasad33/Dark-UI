@@ -20,14 +20,14 @@ npx shadcn add https://dark-ui.vercel.app/r/smooth-accordion.json
 ## Usage
 
 ```tsx
-import SmoothAccordion from "@/components/smooth-accordion";
+import SmoothAccordion from "@/registry/iris/smooth-accordion";
 
 export default function Example() {
   return <SmoothAccordion />;
 }
 ```
 
-### Custom Items
+## Working demo is in playground
 
 ```tsx
 import SmoothAccordion, {
@@ -62,7 +62,10 @@ export default function Example() {
 The component exports reusable parts for composition and tree-shaking:
 
 ```tsx
-import { ChevronDownIcon, AccordionItem } from "@/components/smooth-accordion";
+import {
+  ChevronDownIcon,
+  type AccordionItem,
+} from "@/registry/iris/smooth-accordion";
 ```
 
 - **`ChevronDownIcon`**: Memoized chevron icon component
