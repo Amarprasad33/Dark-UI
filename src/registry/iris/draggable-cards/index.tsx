@@ -101,8 +101,8 @@ export const DEFAULT_CARDS: CardData[] = [
 
 export const SPRING_CONFIG = {
   type: "spring" as const,
-  stiffness: 300,
-  damping: 30,
+  stiffness: 600,
+  damping: 70,
 };
 
 export const STACK_SPRING_CONFIG = {
@@ -170,7 +170,7 @@ CardItem.displayName = "CardItem";
 export default function DraggableCards({
   cards: initialCards = DEFAULT_CARDS,
   className,
-  swipeThreshold = 100,
+  swipeThreshold = 140,
 }: DraggableCardsProps) {
   const [cards, setCards] = useState(initialCards);
   const [scope, animate] = useAnimate();
@@ -185,16 +185,16 @@ export default function DraggableCards({
           // Swipe detected: send card to back
           const swipedCard = cards[cards.length - 1];
 
-          await animate(
+          animate(
             `[data-card-id="${swipedCard.id}"]`,
             { scale: 0.3, x: 0, z: -10 },
-            { ...SPRING_CONFIG, duration: 0.2 },
+            { ...SPRING_CONFIG },
           );
 
           animate(
             `[data-card-id="${swipedCard.id}"]`,
             { x: 0, z: 0 },
-            { ...SPRING_CONFIG, bounce: 0, duration: 0.15 },
+            { ...SPRING_CONFIG, bounce: 0 },
           );
 
           // Reorder cards: move top card to the back
