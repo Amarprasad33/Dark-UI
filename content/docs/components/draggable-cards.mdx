@@ -1,0 +1,86 @@
+---
+title: Draggable Cards
+description: A swipeable, stacked card component with spring-physics drag animations and automatic card reordering.
+---
+
+import DraggableCards from "@/registry/iris/draggable-cards";
+
+## Preview
+
+<div className="flex w-full items-center justify-center p-10 h-[44rem] border border-zinc-800 rounded-lg">
+  <DraggableCards />
+</div>
+
+## Installation
+
+```bash
+npx shadcn add https://dark-ui.vercel.app/r/draggable-cards.json
+```
+
+## Usage
+
+```tsx
+import DraggableCards from "@/registry/iris/draggable-cards";
+
+export default function Example() {
+  return <DraggableCards />;
+}
+```
+
+## With Custom Cards
+
+```tsx
+import DraggableCards, { type CardData } from "@/registry/iris/draggable-cards";
+
+const myCards: CardData[] = [
+  {
+    id: 1,
+    color: "#64748b",
+    rotation: 5,
+    image: "/my-image-1.jpg",
+    orient: "portrait",
+    dimensions: "w-56 h-72",
+  },
+  {
+    id: 2,
+    color: "#57534e",
+    rotation: -3,
+    image: "/my-image-2.jpg",
+    orient: "landscape",
+    dimensions: "w-72 h-60",
+  },
+];
+
+export default function Example() {
+  return <DraggableCards cards={myCards} swipeThreshold={100} />;
+}
+```
+
+## Props
+
+| Prop             | Type         | Default     | Description                                 |
+| :--------------- | :----------- | :---------- | :------------------------------------------ |
+| `cards`          | `CardData[]` | `[...]`     | Array of card data objects to display.      |
+| `className`      | `string`     | `undefined` | Custom class for the container.             |
+| `swipeThreshold` | `number`     | `140`       | Pixel distance required to trigger a swipe. |
+
+## Named Exports
+
+The component exports reusable parts for composition and tree-shaking:
+
+```tsx
+import {
+  CardItem,
+  type CardData,
+  type DraggableCardsProps,
+  DEFAULT_CARDS,
+  SPRING_CONFIG,
+  STACK_SPRING_CONFIG,
+} from "@/registry/iris/draggable-cards";
+```
+
+- **`CardItem`**: Memoized individual card sub-component
+- **`CardData`**: TypeScript interface for card data
+- **`DEFAULT_CARDS`**: Default set of card data
+- **`SPRING_CONFIG`**: Spring animation config for swipe animations
+- **`STACK_SPRING_CONFIG`**: Spring animation config for stack reordering

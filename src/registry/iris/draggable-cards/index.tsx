@@ -155,7 +155,7 @@ const CardItem = memo(function CardItem({
         fill
         src={card.image}
         alt={`Card ${card.id} — ${card.orient}`}
-        className="h-full w-full object-cover rounded-lg pointer-events-none"
+        className="h-full w-full object-cover rounded-lg pointer-events-none !m-0"
         sizes="(max-width: 768px) 100vw, 288px"
       />
     </motion.div>
@@ -219,7 +219,7 @@ export default function DraggableCards({
   return (
     <div
       className={cn(
-        "w-full min-h-[500px] h-full flex items-center justify-center bg-zinc-50 relative rounded-xl",
+        "w-full  h-full flex items-center justify-center bg-zinc-50 relative rounded-xl",
         className,
       )}
       style={{ perspective: "1000px" }}
