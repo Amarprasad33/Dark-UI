@@ -1,0 +1,74 @@
+---
+title: Magnetic Filings
+description: An interactive card with a grid of tiny filings that rotate to point toward the cursor, simulating a magnetic field effect.
+---
+
+import MagneticFilings from "@/registry/iris/magnetic-filings";
+
+## Preview
+
+<div className="flex w-full items-center justify-center p-10 min-h-[30rem] border border-zinc-800 rounded-lg">
+  <MagneticFilings />
+</div>
+
+## Installation
+
+```bash
+npx shadcn add https://dark-ui.vercel.app/r/magnetic-filings.json
+```
+
+## Usage
+
+```tsx
+import MagneticFilings from "@/registry/iris/magnetic-filings";
+
+export default function Example() {
+  return <MagneticFilings />;
+}
+```
+
+## With Custom Content
+
+```tsx
+import MagneticFilings from "@/registry/iris/magnetic-filings";
+
+export default function Example() {
+  return (
+    <MagneticFilings
+      title="Engineers"
+      description="Building the future, one commit at a time"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop          | Type     | Default                                               | Description                           |
+| :------------ | :------- | :---------------------------------------------------- | :------------------------------------ |
+| `className`   | `string` | `undefined`                                           | Custom class for the outer wrapper.   |
+| `title`       | `string` | `"Developers"`                                        | Title text shown in the card overlay. |
+| `description` | `string` | `"Debugging logic is easy—debugging vibes is harder"` | Description text in the overlay.      |
+
+## Named Exports
+
+The component exports reusable parts for composition and tree-shaking:
+
+```tsx
+import {
+  Filing,
+  type FilingProps,
+  type MagneticFilingsProps,
+  GRID_SIZE,
+  CARD_WIDTH,
+  CARD_HEIGHT,
+  SPRING_CONFIG,
+  HOVER_SPRING_CONFIG,
+} from "@/registry/iris/magnetic-filings";
+```
+
+- **`Filing`**: Memoized individual filing sub-component
+- **`FilingProps`**: TypeScript interface for filing props
+- **`GRID_SIZE`**: Spacing constant for the filing grid
+- **`CARD_WIDTH` / `CARD_HEIGHT`**: Card dimension constants
+- **`SPRING_CONFIG` / `HOVER_SPRING_CONFIG`**: Spring animation configurations

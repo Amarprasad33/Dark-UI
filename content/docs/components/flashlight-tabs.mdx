@@ -1,0 +1,35 @@
+---
+title: Flashlight Tabs
+description: A tab navigation component with a glowing flashlight effect that follows the active tab selection.
+---
+
+import FlashlightTabs from "@/registry/iris/flashlight-tabs";
+
+## Preview
+
+<div className="flex w-full items-center justify-center p-10 min-h-[24rem] border border-zinc-800 rounded-lg">
+  <FlashlightTabs />
+</div>
+
+## Installation
+
+```bash
+npx shadcn add https://dark-ui.vercel.app/r/flashlight-tabs.json
+```
+
+## Usage
+
+```tsx
+import FlashlightTabs from "@/registry/iris/flashlight-tabs";
+
+export default function Example() {
+  return <FlashlightTabs />;
+}
+```
+
+## Features
+
+- **Flashlight glow**: A soft white glow follows the selected tab along the bottom edge.
+- **Spring-based transitions**: Tab background and glow animate with smooth spring physics.
+- **Responsive**: Automatically shows fewer tabs on mobile screens.
+- **Text shadow**: The active tab gets a subtle luminous text shadow.

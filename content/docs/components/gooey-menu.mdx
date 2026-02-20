@@ -1,0 +1,79 @@
+---
+title: Gooey Menu
+description: An animated radial menu with a gooey SVG filter effect that merges button shapes when expanding and collapsing.
+---
+
+import GooeyMenu from "@/registry/iris/gooey-menu";
+
+## Preview
+
+<div className="flex w-full items-center justify-center p-10 min-h-[24rem] border border-zinc-800 rounded-lg">
+  <GooeyMenu />
+</div>
+
+## Installation
+
+```bash
+npx shadcn add https://dark-ui.vercel.app/r/gooey-menu.json
+```
+
+## Usage
+
+```tsx
+import GooeyMenu from "@/registry/iris/gooey-menu";
+
+export default function Example() {
+  return <GooeyMenu />;
+}
+```
+
+## With Custom Items
+
+```tsx
+import GooeyMenu, {
+  type GooeyMenuItem,
+  HomeIcon,
+  MailIcon,
+} from "@/registry/iris/gooey-menu";
+
+const items: GooeyMenuItem[] = [
+  { title: "Home", icon: <HomeIcon />, onClick: () => console.log("Home") },
+  { title: "Mail", icon: <MailIcon />, onClick: () => console.log("Mail") },
+];
+
+export default function Example() {
+  return <GooeyMenu items={items} onOpenChange={(open) => console.log(open)} />;
+}
+```
+
+## Props
+
+| Prop           | Type                        | Default     | Description                        |
+| :------------- | :-------------------------- | :---------- | :--------------------------------- |
+| `items`        | `GooeyMenuItem[]`           | `[...]`     | Array of menu items with icons.    |
+| `className`    | `string`                    | `undefined` | Custom class for the container.    |
+| `onOpenChange` | `(isOpen: boolean) => void` | `undefined` | Callback when the menu is toggled. |
+
+## Named Exports
+
+The component exports reusable parts for composition and tree-shaking:
+
+```tsx
+import {
+  GooeyMenu,
+  type GooeyMenuItem,
+  MenuIcon,
+  CloseIcon,
+  HomeIcon,
+  MailIcon,
+  UserIcon,
+  SettingsIcon,
+  DEFAULT_ITEMS,
+} from "@/registry/iris/gooey-menu";
+```
+
+- **`GooeyMenu`**: The main menu component (also available as default export)
+- **`GooeyMenuItem`**: TypeScript interface for menu item data
+- **`MenuIcon` / `CloseIcon`**: Memoized toggle icons
+- **`HomeIcon` / `MailIcon` / `UserIcon` / `SettingsIcon`**: Memoized menu item icons
+- **`DEFAULT_ITEMS`**: Default set of menu items

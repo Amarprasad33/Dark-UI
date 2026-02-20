@@ -1,0 +1,65 @@
+---
+title: Multi Follow Cursor
+description: A layered cursor-tracking component with multiple spring-physics rings that trail behind the pointer at different speeds.
+---
+
+import MultiFollowCursor from "@/registry/iris/multi-follow-cursor";
+
+## Preview
+
+<div className="flex w-full items-center justify-center p-10 min-h-[24rem] border border-zinc-800 rounded-lg">
+  <MultiFollowCursor />
+</div>
+
+## Installation
+
+```bash
+npx shadcn add https://dark-ui.vercel.app/r/multi-follow-cursor.json
+```
+
+## Usage
+
+```tsx
+import MultiFollowCursor from "@/registry/iris/multi-follow-cursor";
+
+export default function Example() {
+  return <MultiFollowCursor />;
+}
+```
+
+## With Children
+
+```tsx
+import MultiFollowCursor from "@/registry/iris/multi-follow-cursor";
+
+export default function Example() {
+  return (
+    <MultiFollowCursor className="h-96">
+      <p className="text-white text-lg">Move your cursor around!</p>
+    </MultiFollowCursor>
+  );
+}
+```
+
+## Props
+
+| Prop        | Type              | Default     | Description                                       |
+| :---------- | :---------------- | :---------- | :------------------------------------------------ |
+| `className` | `string`          | `undefined` | Custom class for the container.                   |
+| `children`  | `React.ReactNode` | `undefined` | Content to render inside the cursor-tracked area. |
+
+## Named Exports
+
+The component exports reusable parts for composition:
+
+```tsx
+import {
+  Cursor,
+  type MultiFollowCursorProps,
+  type CursorProps,
+} from "@/registry/iris/multi-follow-cursor";
+```
+
+- **`Cursor`**: The multi-ring cursor sub-component
+- **`MultiFollowCursorProps`**: TypeScript interface for the main component
+- **`CursorProps`**: TypeScript interface for the cursor sub-component
