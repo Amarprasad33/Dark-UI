@@ -11,10 +11,6 @@ import {
 } from "react";
 import { motion, useAnimate } from "motion/react";
 
-// ============================================================================
-// Types
-// ============================================================================
-
 export interface MenuItem {
   id: string;
   label: string;
@@ -162,7 +158,7 @@ export default function VerticalNav({
     (index: number, element: HTMLDivElement | null) => {
       itemRefs.current[index] = element;
     },
-    []
+    [],
   );
 
   const measure = useCallback(() => {
@@ -187,7 +183,7 @@ export default function VerticalNav({
       for (let i = 0; i < index; i++) sum += itemHeights[i] ?? 0;
       return sum;
     },
-    [itemHeights]
+    [itemHeights],
   );
 
   const handleClick = useCallback(
@@ -212,18 +208,18 @@ export default function VerticalNav({
             return animate(el, { y: toTopY, opacity: 1 }, SPRING_CONFIG);
           }
           return animate(el, { y: 20, opacity: 0 }, SPRING_CONFIG);
-        })
+        }),
       );
     },
-    [animate, getCumulativeHeightAbove, onSelect, stableItems]
+    [animate, getCumulativeHeightAbove, onSelect, stableItems],
   );
 
   const handleBack = useCallback(async () => {
     setActiveIndex(null);
     await Promise.all(
       itemRefs.current.map(
-        (el) => el && animate(el, { y: 0, opacity: 1 }, SPRING_CONFIG)
-      )
+        (el) => el && animate(el, { y: 0, opacity: 1 }, SPRING_CONFIG),
+      ),
     );
   }, [animate]);
 
@@ -248,5 +244,4 @@ export default function VerticalNav({
 
 VerticalNav.displayName = "VerticalNav";
 
-// Named exports for composition and tree-shaking
 export { ReturnIcon, NavRow, SPRING_CONFIG, DEFAULT_ITEMS };
