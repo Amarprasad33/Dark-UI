@@ -1,6 +1,7 @@
 import DraggableCards from "@/registry/iris/draggable-cards";
 import TubelightAccordion from "@/registry/iris/tubelight-accordion";
 import VerticalNav from "@/components/archive/vertical-nav";
+import LampCard from "@/registry/iris/lamp-card";
 
 export default function Playground() {
   return (
@@ -8,7 +9,8 @@ export default function Playground() {
       <div className="relative w-[70%] h-[80%] border border-zinc-700 text-white border-dashed flex flex-col items-center justify-center">
         {/* <DraggableCards /> */}
         <CornerDecor />
-        <VerticalNav />
+        {/* <VerticalNav /> */}
+        <LampCard />
         {/* <TubelightAccordion /> */}
         <div className="text-zinc-400 text-base absolute bottom-4 mx-auto sm:hidden">
           **Its still in development, please view on a bigger screen for better
