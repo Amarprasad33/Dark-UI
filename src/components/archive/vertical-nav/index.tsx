@@ -11,9 +11,14 @@ import {
 } from "react";
 import { motion, useAnimate } from "motion/react";
 
+// ============================================================================
+// Types
+// ============================================================================
+
 export interface MenuItem {
   id: string;
   label: string;
+  children?: MenuItem[];
 }
 
 export interface VerticalNavProps {
@@ -79,7 +84,23 @@ const SPRING_CONFIG = {
 
 const DEFAULT_ITEMS: MenuItem[] = [
   { id: "home", label: "Home" },
-  { id: "craft", label: "Craft" },
+  {
+    id: "craft",
+    label: "Craft",
+    children: [
+      {
+        id: "design",
+        label: "Design",
+        children: [
+          { id: "figma", label: "Figma" },
+          { id: "sketch", label: "Sketch" },
+          { id: "framer", label: "Framer" },
+        ],
+      },
+      { id: "code", label: "Code" },
+      { id: "animation", label: "Animation" },
+    ],
+  },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
@@ -95,6 +116,7 @@ interface NavRowProps {
   register: (index: number, element: HTMLDivElement | null) => void;
   onClick: () => void;
   onBack: () => void;
+  children: MenuItem[] | undefined;
 }
 
 const NavRow = memo(function NavRow({
@@ -104,6 +126,7 @@ const NavRow = memo(function NavRow({
   register,
   onClick,
   onBack,
+  children,
 }: NavRowProps) {
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -122,14 +145,43 @@ const NavRow = memo(function NavRow({
         <div
           aria-label="Back to menu"
           onClick={onBack}
-          className="mb-1 absolute -left-6 inline-flex items-center gap-1 text-zinc-300 hover:text-zinc-100 cursor-pointer"
+          className="absolute top-1 -left-5 inline-flex items-center gap-1 text-zinc-300 hover:text-zinc-100 cursor-pointer"
         >
-          <ReturnIcon className="text-zinc-200/70" />
+          <ReturnIcon className="text-zinc-200/70 size-[14px]" />
         </div>
       )}
 
-      <div className="hover:text-zinc-200/80 cursor-pointer" onClick={onClick}>
-        {label}
+      <div className="flex flex-col">
+        <div
+          className="text-zinc-400 hover:text-zinc-200/90 cursor-pointer"
+          onClick={onClick}
+        >
+          {label}
+        </div>
+        <motion.div
+          className="flex flex-col ml-4"
+          initial={{ opacity: 0, filter: "blur(4px)", y: 20 }}
+          animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+          transition={{ ...SPRING_CONFIG, duration: 0.2 }}
+        >
+          {isActive &&
+            children?.length &&
+            children.map((child, index) => (
+              <motion.div
+                key={child.id}
+                initial={{ opacity: 0, filter: "blur(4px)", y: 20 }}
+                animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                transition={{
+                  ...SPRING_CONFIG,
+                  duration: 0.2,
+                  delay: index * 0.1,
+                }}
+                className="text-zinc-400 hover:text-zinc-200/90 cursor-pointer"
+              >
+                {child.label}
+              </motion.div>
+            ))}
+        </motion.div>
       </div>
     </motion.div>
   );
@@ -235,6 +287,7 @@ export default function VerticalNav({
             register={registerItem}
             onClick={() => handleClick(index)}
             onBack={handleBack}
+            children={item?.children}
           />
         ))}
       </div>
@@ -244,4 +297,5 @@ export default function VerticalNav({
 
 VerticalNav.displayName = "VerticalNav";
 
+// Named exports for composition and tree-shaking
 export { ReturnIcon, NavRow, SPRING_CONFIG, DEFAULT_ITEMS };

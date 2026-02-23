@@ -8,7 +8,7 @@ import LuminatedCheckbox from "@/registry/iris/luminated-checkbox";
 import MultiFollowCursor from "@/registry/iris/multi-follow-cursor";
 import SmoothAccordion from "@/registry/iris/smooth-accordion";
 import TubelightAccordion from "@/registry/iris/tubelight-accordion";
-import VerticalNav from "@/registry/iris/vertical-nav";
+import VerticalNav from "@/components/archive/vertical-nav";
 import GooeyMenu from "@/registry/iris/gooey-menu";
 
 // ============================================================================

@@ -1,6 +1,6 @@
 import DraggableCards from "@/registry/iris/draggable-cards";
 import TubelightAccordion from "@/registry/iris/tubelight-accordion";
-import VerticalNav from "@/registry/iris/vertical-nav";
+import VerticalNav from "@/components/archive/vertical-nav";
 
 export default function Playground() {
   return (
