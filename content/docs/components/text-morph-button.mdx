@@ -1,0 +1,94 @@
+---
+title: Text Morph Button
+description: A premium button that morphs its text label character-by-character on hover.
+---
+
+import TextMorphButton from "@/registry/iris/text-morph-button";
+
+## Overview
+
+The `TextMorphButton` is a highly interactive UI element designed for dark-mode interfaces. It uses Framer Motion's layout animations to smoothly transition between different text states, creating a "morphing" effect where characters rearrange or fade in/out to form the new word.
+
+## Preview
+
+<div className="flex w-full items-center justify-center p-10 border border-zinc-800 rounded-lg">
+  <TextMorphButton />
+</div>
+
+## Installation
+
+```bash
+npx shadcn add https://dark-ui.vercel.app/r/text-morph-button.json
+```
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import TextMorphButton from "@/registry/iris/text-morph-button";
+
+export default function Demo() {
+  return <TextMorphButton defaultText="Get Started" hoverText="Go Start Now" />;
+}
+```
+
+### Custom Styling
+
+Using Tailwind classes to customize the button's appearance:
+
+```tsx
+<TextMorphButton
+  defaultText="Login"
+  hoverText="Welcome!"
+  buttonClassName="bg-blue-600 hover:bg-blue-700 text-white rounded-full"
+/>
+```
+
+## Composition
+
+For more control, you can use the `Morph` sub-component directly:
+
+```tsx
+import { Morph } from "@/registry/iris/text-morph-button";
+
+export default function CustomMorph() {
+  return (
+    <div className="text-2xl font-bold bg-zinc-900 p-4">
+      <Morph>Dynamic Content</Morph>
+    </div>
+  );
+}
+```
+
+## API Reference
+
+### TextMorphButtonProps
+
+| Prop              | Type     | Default          | Description                                    |
+| :---------------- | :------- | :--------------- | :--------------------------------------------- |
+| `defaultText`     | `string` | `"Get Started"`  | The text displayed in the normal state.        |
+| `hoverText`       | `string` | `"Go Start Now"` | The text displayed when the button is hovered. |
+| `className`       | `string` | `undefined`      | Custom class for the wrapper container.        |
+| `buttonClassName` | `string` | `undefined`      | Custom class for the button element.           |
+
+### MorphProps
+
+| Prop        | Type     | Default     | Description                  |
+| :---------- | :------- | :---------- | :--------------------------- |
+| `children`  | `string` | `undefined` | The text content to animate. |
+| `className` | `string` | `undefined` | Custom class for characters. |
+
+## Performance
+
+The component is highly optimized:
+
+- **Memoized Sub-components:** Uses `React.memo` for individual character animations.
+- **Key Generation:** Hoisted utility for intelligent layout ID assignment.
+- **Tree-shaking:** Named exports allow for minimal bundle impact.
+
+## Accessibility
+
+- Includes `aria-label` for screen readers.
+- Supports standard button interactions.
+- Semantic HTML `<button>` element.

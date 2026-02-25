@@ -5,6 +5,10 @@ description: An animated checkbox with strikethrough effect, border animations, 
 
 import LuminatedCheckbox from "@/registry/iris/luminated-checkbox";
 
+## Overview
+
+The `LuminatedCheckbox` is a sophisticated form element designed for premium dark-mode interfaces. It features multi-stage animations including path drawing for borders, scale transitions for the check mark, and a strike-through effect for the label.
+
 ## Preview
 
 <div className="flex w-full items-center justify-center p-10 border border-zinc-800 rounded-lg">
@@ -19,18 +23,70 @@ npx shadcn add https://dark-ui.vercel.app/r/luminated-checkbox.json
 
 ## Usage
 
+### Basic Usage
+
 ```tsx
 import LuminatedCheckbox from "@/registry/iris/luminated-checkbox";
 
-export default function Example() {
+export default function Demo() {
   return <LuminatedCheckbox />;
 }
 ```
 
-## Props
+### With Custom Items and Callbacks
 
-| Prop        | Type                                        | Default     | Description                         |
-| :---------- | :------------------------------------------ | :---------- | :---------------------------------- |
-| `items`     | `string[]`                                  | `[...]`     | Array of labels for the checkboxes. |
-| `className` | `string`                                    | `undefined` | Custom class for the container.     |
-| `onChange`  | `(index: number, checked: boolean) => void` | `undefined` | Callback when state changes.        |
+```tsx
+<LuminatedCheckbox
+  items={["Feature A", "Feature B", "Feature C"]}
+  onChange={(index, checked) => console.log(`Item ${index} is now ${checked}`)}
+/>
+```
+
+## Composition
+
+For individual control, you can use the `AnimatedCheckbox` sub-component:
+
+```tsx
+import { AnimatedCheckbox } from "@/registry/iris/luminated-checkbox";
+
+export default function SingleTask() {
+  return (
+    <AnimatedCheckbox
+      displayText="Finish the project"
+      onChange={(checked) => console.log(checked)}
+    />
+  );
+}
+```
+
+## API Reference
+
+### LuminatedCheckboxProps
+
+| Prop        | Type                                        | Default         | Description                         |
+| :---------- | :------------------------------------------ | :-------------- | :---------------------------------- |
+| `items`     | `string[]`                                  | `DEFAULT_ITEMS` | Array of labels for the checkboxes. |
+| `className` | `string`                                    | `undefined`     | Custom class for the container.     |
+| `onChange`  | `(index: number, checked: boolean) => void` | `undefined`     | Callback when any checkbox changes. |
+
+### AnimatedCheckboxProps
+
+| Prop          | Type                         | Default     | Description                         |
+| :------------ | :--------------------------- | :---------- | :---------------------------------- |
+| `displayText` | `string`                     | `undefined` | The label text for the checkbox.    |
+| `onChange`    | `(checked: boolean) => void` | `undefined` | Callback when state changes.        |
+| `className`   | `string`                     | `undefined` | Custom class for the checkbox item. |
+
+## Performance
+
+The component is optimized for smooth performance:
+
+- **Memoized Components:** Uses `React.memo` for both the main list and individual items.
+- **Animation Orchestration:** Uses `useAnimate` for precise, low-overhead animation control.
+- **Tree-shaking:** Supports named exports for selective component usage.
+
+## Accessibility
+
+- **Keyboard Navigation:** Fully supports `Tab`, `Enter`, and `Space`.
+- **ARIA Attributes:** Correct implementation of `role="checkbox"` and `aria-checked`.
+- **Semantic Structure:** Clear separation of interactive elements and descriptive labels.
