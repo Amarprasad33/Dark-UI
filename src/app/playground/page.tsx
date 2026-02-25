@@ -2,6 +2,7 @@ import DraggableCards from "@/registry/iris/draggable-cards";
 import TubelightAccordion from "@/registry/iris/tubelight-accordion";
 import VerticalNav from "@/components/archive/vertical-nav";
 import LampCard from "@/registry/iris/lamp-card";
+import TextMorphButton from "@/registry/iris/text-morph-button";
 
 export default function Playground() {
   return (
@@ -10,7 +11,8 @@ export default function Playground() {
         {/* <DraggableCards /> */}
         <CornerDecor />
         {/* <VerticalNav /> */}
-        <LampCard />
+        <TextMorphButton />
+        {/* <LampCard /> */}
         {/* <TubelightAccordion /> */}
         <div className="text-zinc-400 text-base absolute bottom-4 mx-auto sm:hidden">
           **Its still in development, please view on a bigger screen for better

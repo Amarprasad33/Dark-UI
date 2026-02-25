@@ -44,6 +44,20 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "text-morph-button",
+      "type": "registry:component",
+      "title": "Text Morph Button",
+      "description": "A premium button that morphs its text label character-by-character on hover",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/iris/text-morph-button/index.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

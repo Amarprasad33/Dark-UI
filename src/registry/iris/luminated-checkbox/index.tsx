@@ -61,25 +61,25 @@ const AnimatedCheckbox = memo(function AnimatedCheckbox({
       await borderAnimate(
         borderSc.current,
         { pathLength: 0 },
-        { duration: 0.2, ease: "easeInOut" }
+        { duration: 0.2, ease: "easeInOut" },
       );
 
       await boxAnimate(
         boxSc.current,
         { scale: 1 },
-        { duration: 0.2, ease: "easeOut" }
+        { duration: 0.2, ease: "easeOut" },
       );
 
       tickAnimate(
         tickSc.current,
         { pathLength: 1, opacity: 1 },
-        { duration: 0.2, ease: "easeInOut" }
+        { duration: 0.2, ease: "easeInOut" },
       );
 
       lineAnimate(
         lineSc.current,
         { width: "100%" },
-        { duration: 0.2, ease: "easeInOut" }
+        { duration: 0.2, ease: "easeInOut" },
       );
 
       textAnimate(textSc.current, { x: [0, 4, 0] });
@@ -88,7 +88,7 @@ const AnimatedCheckbox = memo(function AnimatedCheckbox({
       lineAnimate(
         lineSc.current,
         { width: 0 },
-        { duration: 0.2, ease: "easeInOut" }
+        { duration: 0.2, ease: "easeInOut" },
       );
 
       textAnimate(textSc.current, { x: [0, -4, 0] });
@@ -96,19 +96,19 @@ const AnimatedCheckbox = memo(function AnimatedCheckbox({
       await tickAnimate(
         tickSc.current,
         { pathLength: 0, opacity: 0 },
-        { duration: 0.2, ease: "easeInOut" }
+        { duration: 0.2, ease: "easeInOut" },
       );
 
       await boxAnimate(
         boxSc.current,
         { scale: 0 },
-        { duration: 0.1, ease: "easeOut" }
+        { duration: 0.1, ease: "easeOut" },
       );
 
       await borderAnimate(
         borderSc.current,
         { pathLength: 1 },
-        { duration: 0.4, ease: "easeInOut" }
+        { duration: 0.4, ease: "easeInOut" },
       );
     }
   }, [
@@ -143,7 +143,7 @@ const AnimatedCheckbox = memo(function AnimatedCheckbox({
     <div
       className={cn(
         "hover:bg-zinc-800 cursor-pointer flex items-center px-[10px] py-2 rounded-lg w-fit",
-        className
+        className,
       )}
       onClick={handleToggle}
       role="checkbox"
@@ -211,7 +211,7 @@ const AnimatedCheckbox = memo(function AnimatedCheckbox({
       <motion.span
         className={cn(
           "ml-2 relative font-medium",
-          checked ? "text-[#545454]" : "text-[#c1c1c1]"
+          checked ? "text-[#545454]" : "text-[#c1c1c1]",
         )}
         style={{ userSelect: "none" }}
         initial={{ x: 0 }}
