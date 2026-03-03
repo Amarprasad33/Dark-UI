@@ -1,0 +1,106 @@
+---
+title: Lamp Card
+description: An interactive card with a cursor-tracking lamp that rotates and casts a dynamic glow, illuminating text under the pointer.
+---
+
+import LampCard from "@/registry/iris/lamp-card";
+
+## Overview
+
+The `LampCard` is a visually rich UI element designed for dark-mode interfaces. It features a decorative lamp SVG affixed to the top of the card that rotates smoothly to follow the user's cursor. A soft light cone radiates from the lamp, and the card's text content is revealed through a radial mask that tracks the pointer — creating the illusion of text being lit by the lamp.
+
+## Preview
+
+<div className="flex w-full items-center justify-center p-10 border border-zinc-800 rounded-lg">
+  <LampCard />
+</div>
+
+## Installation
+
+```bash
+npx shadcn add https://dark-ui.vercel.app/r/lamp-card.json
+```
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import LampCard from "@/registry/iris/lamp-card";
+
+export default function Demo() {
+  return <LampCard />;
+}
+```
+
+### Custom Title & Description
+
+```tsx
+<LampCard
+  title="Curiosity builds craft"
+  description="The more you question the process, the sharper your output becomes. Dig deep."
+/>
+```
+
+### Custom Children
+
+For full content control, pass children directly. They will be rendered inside the illuminated mask area:
+
+```tsx
+<LampCard>
+  <h2 className="text-lg font-semibold">Custom Heading</h2>
+  <p className="text-sm text-zinc-400">
+    Any content you provide will be lit by the lamp effect.
+  </p>
+</LampCard>
+```
+
+### Custom Class
+
+```tsx
+<LampCard className="max-w-sm border-zinc-700" title="My Card" />
+```
+
+## Composition
+
+Named sub-components are exported for advanced use cases:
+
+```tsx
+import { LampSVG, LampGlow } from "@/registry/iris/lamp-card";
+
+// Render just the lamp icon or glow in isolation
+export default function CustomScene() {
+  return (
+    <div className="relative">
+      <LampSVG />
+      <LampGlow />
+    </div>
+  );
+}
+```
+
+## API Reference
+
+### LampCardProps
+
+| Prop          | Type        | Default                         | Description                                              |
+| :------------ | :---------- | :------------------------------ | :------------------------------------------------------- |
+| `title`       | `string`    | `"What do I ask to get better"` | Title text rendered inside the illuminated area.         |
+| `description` | `string`    | `"Just question yourself…"`     | Description text rendered below the title.               |
+| `children`    | `ReactNode` | `undefined`                     | Custom content to replace the default title/description. |
+| `className`   | `string`    | `undefined`                     | Additional CSS classes for the card container.           |
+
+## Performance
+
+The component is optimized for 60fps interactions:
+
+- **Memoized SVGs:** `LampSVG` and `LampGlow` are wrapped with `React.memo` to prevent unnecessary re-renders.
+- **Spring Physics:** Uses `useSpring` for smooth, inertia-based lamp rotation without layout thrash.
+- **Motion Templates:** `useMotionTemplate` computes the radial mask position inline, bypassing React state updates entirely.
+- **`useCallback` for handlers:** The `onPointerMove` handler is memoized to avoid re-creation on each render.
+
+## Accessibility
+
+- The lamp SVGs carry `aria-hidden="true"` so they are ignored by assistive technologies.
+- Text content remains in the DOM at all times; the masking is a visual-only effect.
+- Supports standard keyboard focus and tab order for any interactive children passed in.
