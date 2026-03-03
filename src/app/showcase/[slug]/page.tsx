@@ -3,13 +3,16 @@
 import { notFound } from "next/navigation";
 import { use } from "react";
 
+import DraggableCards from "@/registry/iris/draggable-cards";
 import FlashlightTabs from "@/registry/iris/flashlight-tabs";
+import GooeyMenu from "@/registry/iris/gooey-menu";
+import LampCard from "@/registry/iris/lamp-card";
 import LuminatedCheckbox from "@/registry/iris/luminated-checkbox";
+import MagneticFilings from "@/registry/iris/magnetic-filings";
 import MultiFollowCursor from "@/registry/iris/multi-follow-cursor";
 import SmoothAccordion from "@/registry/iris/smooth-accordion";
+import TextMorphButton from "@/registry/iris/text-morph-button";
 import TubelightAccordion from "@/registry/iris/tubelight-accordion";
-import VerticalNav from "@/components/archive/vertical-nav";
-import GooeyMenu from "@/registry/iris/gooey-menu";
 
 // ============================================================================
 // Component Registry
@@ -19,13 +22,29 @@ const componentMap: Record<
   string,
   { component: React.ComponentType; title: string }
 > = {
+  "draggable-cards": {
+    component: DraggableCards,
+    title: "Draggable Cards",
+  },
   "flashlight-tabs": {
     component: FlashlightTabs,
     title: "Flashlight Tabs",
   },
+  "gooey-menu": {
+    component: GooeyMenu,
+    title: "Gooey Menu",
+  },
+  "lamp-card": {
+    component: LampCard,
+    title: "Lamp Card",
+  },
   "luminated-checkbox": {
     component: LuminatedCheckbox,
     title: "Luminated Checkbox",
+  },
+  "magnetic-filings": {
+    component: MagneticFilings,
+    title: "Magnetic Filings",
   },
   "multi-follow-cursor": {
     component: MultiFollowCursor,
@@ -35,18 +54,14 @@ const componentMap: Record<
     component: SmoothAccordion,
     title: "Smooth Accordion",
   },
+  "text-morph-button": {
+    component: TextMorphButton,
+    title: "Text Morph Button",
+  },
   "tubelight-accordion": {
     component: TubelightAccordion,
     title: "Tubelight Accordion",
   },
-  "gooey-menu": {
-    component: GooeyMenu,
-    title: "Gooey Menu",
-  },
-  // "vertical-nav": {
-  //   component: VerticalNav,
-  //   title: "Vertical Nav",
-  // },
 };
 
 // ============================================================================
