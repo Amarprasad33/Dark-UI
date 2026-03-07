@@ -41,10 +41,10 @@ export default function SmoothStepper() {
         </AnimatePresence>
       </motion.div>
 
-      <div className="flex gap-5">
+      <div className="flex gap-3">
         <motion.button
-          whileTap={{ scale: 0.94 }}
-          className="px-6 py-2 border border-dashed border-zinc-800 hover:border-zinc-800/70 group"
+          whileTap={{ scale: 0.97 }}
+          className="p-4 rounded-full bg-zinc-900 hover:bg-zinc-900/80 group"
           onClick={() => {
             if (currentStep === 0) {
               return;
@@ -54,6 +54,7 @@ export default function SmoothStepper() {
         >
           <span className="group-hover:opacity-75">
             <svg
+              className="w-4 h-4"
               width="16"
               height="18"
               viewBox="0 0 16 18"
@@ -68,7 +69,7 @@ export default function SmoothStepper() {
           </span>
         </motion.button>
 
-        <motion.div className="px-6 py-2 border border-dashed border-zinc-800 bg-zinc-900/80">
+        <motion.div className="px-6 py-2 rounded-full border-zinc-800 bg-zinc-800/70">
           <div className="flex items-center gap-4">
             {items.map((label) => (
               <div
@@ -131,8 +132,8 @@ export default function SmoothStepper() {
         </motion.div>
 
         <motion.button
-          whileTap={{ scale: 0.94 }}
-          className="px-6 py-2 border border-dashed border-zinc-800 hover:border-zinc-800/70 group"
+          whileTap={{ scale: 0.97 }}
+          className="p-4 rounded-full bg-zinc-900 hover:bg-zinc-900/80 group"
           onClick={() => {
             if (currentStep === 3) {
               return;
@@ -142,6 +143,7 @@ export default function SmoothStepper() {
         >
           <span className="group-hover:opacity-75">
             <svg
+              className="w-4 h-4"
               width="16"
               height="18"
               viewBox="0 0 16 18"
