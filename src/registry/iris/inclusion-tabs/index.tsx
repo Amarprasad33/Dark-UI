@@ -1,5 +1,6 @@
 "use client";
 
+import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { motion, useMotionValue, useSpring } from "motion/react";
 import { memo, useCallback, useRef } from "react";
@@ -21,13 +22,7 @@ export interface InclusionTabsProps {
 // Hoisted Constants & SVG Icons
 // ============================================================================
 
-const DEFAULT_ITEMS = [
-  "Overview",
-  "Components",
-  "Playground",
-  "Docs",
-  "Changelog",
-];
+const DEFAULT_ITEMS = ["Overview", "Docs", "About", "Playground", "Changelog"];
 
 const SPRING_CONFIG = { stiffness: 400, damping: 30 } as const;
 
@@ -40,6 +35,9 @@ export default function InclusionTabs({
   className,
   onChange,
 }: InclusionTabsProps) {
+  const isMobile = useIsMobile();
+
+  items = isMobile ? DEFAULT_ITEMS.slice(0, 3) : DEFAULT_ITEMS;
   const containerRef = useRef<HTMLDivElement>(null);
   const initialized = useRef(false);
 
