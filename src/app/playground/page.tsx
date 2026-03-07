@@ -1,12 +1,9 @@
 "use client";
 
-import DraggableCards from "@/registry/iris/draggable-cards";
-import TubelightAccordion from "@/registry/iris/tubelight-accordion";
-import VerticalNav from "@/components/archive/vertical-nav";
-import LampCard from "@/registry/iris/lamp-card";
 import TextMorphButton from "@/registry/iris/text-morph-button";
 
 import InclusionTabs from "@/registry/iris/inclusion-tabs";
+import SmoothStepper from "../un-named/page";
 
 export default function Playground() {
   return (
@@ -16,9 +13,8 @@ export default function Playground() {
         <CornerDecor />
         {/* <VerticalNav /> */}
         {/* <TextMorphButton /> */}
-        {/* <LampCard /> */}
-        {/* <TubelightAccordion /> */}
-        <InclusionTabs />
+        <SmoothStepper />
+        {/* <InclusionTabs /> */}
         <div className="text-zinc-400 text-base absolute bottom-4 mx-auto sm:hidden">
           **Its still in development, please view on a bigger screen for better
           experience**
