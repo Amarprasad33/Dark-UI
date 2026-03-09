@@ -27,7 +27,7 @@ export const Navbar = () => {
           <Link href="#vision" className="hover:text-white transition-colors">
             Vision
           </Link>
-          <Link href="#docs" className="hover:text-white transition-colors">
+          <Link href="/docs" className="hover:text-white transition-colors">
             Documentation
           </Link>
         </div>
