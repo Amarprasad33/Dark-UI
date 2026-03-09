@@ -1,0 +1,83 @@
+---
+title: Inclusion Tabs
+description: A responsive tab navigation component with a smooth, animated pill background highlighting the active or hovered tab.
+---
+
+import InclusionTabs from "@/registry/iris/inclusion-tabs";
+
+## Overview
+
+The `InclusionTabs` component is a tabbed navigation interface that features a satisfying, spring-animated highlight pill. It uses Framer Motion's `useSpring` and `useMotionValue` for highly responsive, physics-based interactions. The component intelligently adapts to mobile screens by slicing down the number of default visible tabs.
+
+## Preview
+
+<div className="flex w-full items-center justify-center p-10 border border-zinc-800 rounded-lg">
+  <InclusionTabs />
+</div>
+
+## Installation
+
+```bash
+npx shadcn add https://dark-ui.vercel.app/r/inclusion-tabs.json
+```
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import InclusionTabs from "@/registry/iris/inclusion-tabs";
+
+export default function Demo() {
+  return <InclusionTabs />;
+}
+```
+
+### Custom Tabs with onChange
+
+Provide your own array of items and listen for changes when a user clicks a tab.
+
+```tsx
+"use client";
+
+import InclusionTabs from "@/registry/iris/inclusion-tabs";
+import { useState } from "react";
+
+export default function CustomTabsDemo() {
+  const [activeTab, setActiveTab] = useState("React");
+
+  return (
+    <div className="flex flex-col gap-4 items-center">
+      <InclusionTabs
+        items={["React", "Next.js", "Vue", "Svelte"]}
+        onChange={(tab) => setActiveTab(tab)}
+      />
+      <div className="text-zinc-400">
+        Selected: <span className="text-white font-medium">{activeTab}</span>
+      </div>
+    </div>
+  );
+}
+```
+
+## API Reference
+
+### InclusionTabsProps
+
+| Prop        | Type                    | Default                                                    | Description                                     |
+| :---------- | :---------------------- | :--------------------------------------------------------- | :---------------------------------------------- |
+| `items`     | `string[]`              | `["Overview", "Docs", "About", "Playground", "Changelog"]` | Array of tabs to display.                       |
+| `className` | `string`                | `undefined`                                                | Custom class name for the container element.    |
+| `onChange`  | `(tab: string) => void` | `undefined`                                                | Optional callback fired when a tab is selected. |
+
+## Interactivity features
+
+- **Spring Dynamics:** The background pill glides with exact stiffness and damping based on Framer Motion's springs.
+- **Focus States:** Full keyboard support (`onFocus` acts effectively as hover) creating accessible navigation highlighting.
+- **Responsive:** Automatically truncates items on mobile viewpoints to remain within manageable layouts if relying on the default set.
+
+## Accessibility
+
+- Semantic HTML with `role="tablist"` on the container and `role="tab"` on interactive elements.
+- Accessible focus rings available through standard browser navigation defaults.
+- Motion div utilizes `aria-hidden="true"` since it is purely a visual background highlight and doesn't hold content.

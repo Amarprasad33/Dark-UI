@@ -1,11 +1,12 @@
 // @ts-nocheck
-import * as __fd_glob_10 from "../content/docs/components/tubelight-accordion.mdx?collection=docs"
-import * as __fd_glob_9 from "../content/docs/components/text-morph-button.mdx?collection=docs"
-import * as __fd_glob_8 from "../content/docs/components/smooth-accordion.mdx?collection=docs"
-import * as __fd_glob_7 from "../content/docs/components/multi-follow-cursor.mdx?collection=docs"
-import * as __fd_glob_6 from "../content/docs/components/magnetic-filings.mdx?collection=docs"
-import * as __fd_glob_5 from "../content/docs/components/luminated-checkbox.mdx?collection=docs"
-import * as __fd_glob_4 from "../content/docs/components/lamp-card.mdx?collection=docs"
+import * as __fd_glob_11 from "../content/docs/components/tubelight-accordion.mdx?collection=docs"
+import * as __fd_glob_10 from "../content/docs/components/text-morph-button.mdx?collection=docs"
+import * as __fd_glob_9 from "../content/docs/components/smooth-accordion.mdx?collection=docs"
+import * as __fd_glob_8 from "../content/docs/components/multi-follow-cursor.mdx?collection=docs"
+import * as __fd_glob_7 from "../content/docs/components/magnetic-filings.mdx?collection=docs"
+import * as __fd_glob_6 from "../content/docs/components/luminated-checkbox.mdx?collection=docs"
+import * as __fd_glob_5 from "../content/docs/components/lamp-card.mdx?collection=docs"
+import * as __fd_glob_4 from "../content/docs/components/inclusion-tabs.mdx?collection=docs"
 import * as __fd_glob_3 from "../content/docs/components/gooey-menu.mdx?collection=docs"
 import * as __fd_glob_2 from "../content/docs/components/flashlight-tabs.mdx?collection=docs"
 import * as __fd_glob_1 from "../content/docs/components/draggable-cards.mdx?collection=docs"
@@ -18,4 +19,4 @@ const create = server<typeof Config, import("fumadocs-mdx/runtime/types").Intern
   }
 }>({"doc":{"passthroughs":["extractedReferences"]}});
 
-export const docs = await create.docs("docs", "content/docs", {}, {"index.mdx": __fd_glob_0, "components/draggable-cards.mdx": __fd_glob_1, "components/flashlight-tabs.mdx": __fd_glob_2, "components/gooey-menu.mdx": __fd_glob_3, "components/lamp-card.mdx": __fd_glob_4, "components/luminated-checkbox.mdx": __fd_glob_5, "components/magnetic-filings.mdx": __fd_glob_6, "components/multi-follow-cursor.mdx": __fd_glob_7, "components/smooth-accordion.mdx": __fd_glob_8, "components/text-morph-button.mdx": __fd_glob_9, "components/tubelight-accordion.mdx": __fd_glob_10, });
+export const docs = await create.docs("docs", "content/docs", {}, {"index.mdx": __fd_glob_0, "components/draggable-cards.mdx": __fd_glob_1, "components/flashlight-tabs.mdx": __fd_glob_2, "components/gooey-menu.mdx": __fd_glob_3, "components/inclusion-tabs.mdx": __fd_glob_4, "components/lamp-card.mdx": __fd_glob_5, "components/luminated-checkbox.mdx": __fd_glob_6, "components/magnetic-filings.mdx": __fd_glob_7, "components/multi-follow-cursor.mdx": __fd_glob_8, "components/smooth-accordion.mdx": __fd_glob_9, "components/text-morph-button.mdx": __fd_glob_10, "components/tubelight-accordion.mdx": __fd_glob_11, });
