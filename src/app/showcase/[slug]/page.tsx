@@ -13,6 +13,7 @@ import MultiFollowCursor from "@/registry/iris/multi-follow-cursor";
 import SmoothAccordion from "@/registry/iris/smooth-accordion";
 import TextMorphButton from "@/registry/iris/text-morph-button";
 import TubelightAccordion from "@/registry/iris/tubelight-accordion";
+import InclusionTabs from "@/registry/iris/inclusion-tabs";
 
 // ============================================================================
 // Component Registry
@@ -61,6 +62,10 @@ const componentMap: Record<
   "tubelight-accordion": {
     component: TubelightAccordion,
     title: "Tubelight Accordion",
+  },
+  "inclusion-tabs": {
+    component: InclusionTabs,
+    title: "Inclusion Tabs",
   },
 };
 
