@@ -80,7 +80,7 @@ Filing.displayName = "Filing";
 export default function MagneticFilings({
   className,
   title = "Developers",
-  description = "Debugging logic is easy—debugging vibes is harder",
+  description = "Debugging logic is easy, debugging vibes is harder",
 }: MagneticFilingsProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
