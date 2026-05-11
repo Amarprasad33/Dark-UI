@@ -73,7 +73,6 @@ export const Hero: React.FC = () => {
           </FadeIn>
         </div>
 
-        {/* Right Code/Visual */}
         <div className="relative hidden lg:block">
           <FadeIn delay={0.3}>
             <div className="relative rounded-xl overflow-hidden border border-white/10 bg-surface shadow-2xl shadow-black/50">
@@ -149,7 +148,6 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* Decorational glow */}
               <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/5 blur-[80px] rounded-full pointer-events-none"></div>
             </div>
           </FadeIn>
