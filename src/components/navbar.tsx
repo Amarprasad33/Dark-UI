@@ -13,27 +13,35 @@ export const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 px-12 flex justify-center py-4 lg:px-12 backdrop-blur-sm border-b border-white/5 bg-background/50"
     >
       <div className=" flex items-center justify-between w-full max-w-7xl">
-        <div className="flex items-center gap-2">
-          <Logo className="text-white" width={24} height={24} />
-          <span className="font-bold text-lg tracking-tight text-white">
-            Dark-UI
-          </span>
-        </div>
+        <div className="flex gap-6 items-center">
+          <div className="flex items-center justify-center">
+            <Logo className="text-white" width={24} height={24} />
+          </div>
 
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-          <Link href="/docs" className="hover:text-white transition-colors">
-            Components
-          </Link>
-          <Link href="#vision" className="hover:text-white transition-colors">
-            Vision
-          </Link>
-          <Link href="/docs" className="hover:text-white transition-colors">
-            Documentation
-          </Link>
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground border-l px-6 border-[#2A2A2A]">
+            <Link
+              href="/docs"
+              className="hover:text-white transition-colors text-sm"
+            >
+              Components
+            </Link>
+            <Link
+              href="#vision"
+              className="hover:text-white transition-colors text-sm"
+            >
+              Vision
+            </Link>
+            <Link
+              href="/docs"
+              className="hover:text-white transition-colors text-sm"
+            >
+              Documentation
+            </Link>
+          </div>
         </div>
 
         <div className="flex items-center gap-4">
-          <button className="hidden sm:block px-4 py-2 text-xs font-semibold uppercase tracking-wider bg-white text-black rounded-sm hover:bg-neutral-200 transition-colors">
+          <button className="hidden sm:block px-4 py-2 font-semibold text-sm bg-white text-black rounded-sm hover:bg-neutral-200 transition-colors">
             Get Started
           </button>
         </div>
