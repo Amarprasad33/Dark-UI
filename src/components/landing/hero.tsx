@@ -16,15 +16,15 @@ export const Hero: React.FC = () => {
       </FadeIn>
 
       <FadeIn delay={0.1} className="max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-white mb-6">
+        <h1 className="text-5xl md:text-6xl lg:text-6xl font-semibold tracking-tight leading-[110%] text-white mb-6">
           Beautiful components for those obsessed with dark mode
         </h1>
       </FadeIn>
 
       <FadeIn delay={0.2} className="max-w-xl mx-auto">
-        <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-          10+ premium animated components built with React, TypeScript,
-          Tailwind CSS, and Motion.
+        <p className="text-base font-normal text-muted-foreground leading-relaxed mb-10">
+          10+ premium animated components built with React, TypeScript, Tailwind
+          CSS, and Motion.
         </p>
       </FadeIn>
 
