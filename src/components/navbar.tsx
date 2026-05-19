@@ -26,22 +26,28 @@ export const Navbar = () => {
               Components
             </Link>
             <Link
-              href="#vision"
+              href="/blocks"
               className="hover:text-white transition-colors text-sm"
             >
-              Vision
+              Blocks
             </Link>
             <Link
-              href="/docs"
+              href="/templates"
               className="hover:text-white transition-colors text-sm"
             >
-              Documentation
+              Templates
+            </Link>
+            <Link
+              href="/pricing"
+              className="hover:text-white transition-colors text-sm"
+            >
+              Pricing
             </Link>
           </div>
         </div>
 
         <div className="flex items-center gap-4">
-          <button className="hidden sm:block px-4 py-2 font-semibold text-sm bg-white text-black rounded-sm hover:bg-neutral-200 transition-colors">
+          <button className="hidden sm:block px-4 py-2 font-medium text-sm bg-white text-black rounded-md hover:bg-neutral-200 transition-colors">
             Get Started
           </button>
         </div>
